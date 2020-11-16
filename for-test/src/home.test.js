@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 
 import Home from './components';
 
+
 describe('Home', () => {
     it('should render correctly in debug mode', () => {
 
