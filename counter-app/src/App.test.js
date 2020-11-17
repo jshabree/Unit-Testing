@@ -21,5 +21,5 @@ describe('Addition', () => {
 // it and test are aliases
 
 test('knows that 2 and 2 make 4', () => {
-  expect(2 + 2).toBe(4);
+  expect(2 + 2).toBe(4);  // matcher function
 });
