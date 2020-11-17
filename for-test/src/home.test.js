@@ -12,3 +12,14 @@ describe('Home', () => {
         expect(component).toMatchSnapshot();
     });
 });
+
+// describe('Home', () => {
+//     it('should render banner text correctly with given strings', () => {
+
+//         const strings = ['one','two'];
+
+//         const component = shallow(<Home list={strings} />);
+
+//         expect(component).toMatchSnapshot();
+//     });
+// });
