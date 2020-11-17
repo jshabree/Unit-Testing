@@ -28,7 +28,7 @@ test('knows that 2 and 2 make 4', () => {
 
 // testing app's initial state using shallow rendering
 
-describe('App component', () => {
+describe('App', () => {
   it('starts with a count of 0', () => {
     const wrapper = shallow(<App />);
     const text = wrapper.find('p').text();
@@ -38,12 +38,25 @@ describe('App component', () => {
 
 // testing user's interaction to see if count is indeed incremented ( in this case, by 1)
 
-describe('App', () => {
+describe('App component', () => {
   it('increments count by 1 when button is clicked', () => {
     const wrapper = shallow(<App />);
     const incrementButton = wrapper.find('button.increment');
     incrementButton.simulate('click');
     const text = wrapper.find('p').text();
     expect(text).toEqual('Count: 1');
+  });
+});
+
+// testing App to do something that has not been written yet : decrement
+// This is known as test-driven-development
+
+describe('App component again', () => {
+  it('decrements count by 1 when button is clicked', () => {
+    const wrapper = shallow(<App />);
+    const decrementButton = wrapper.find('button.decrement');
+    decrementButton.simulate('click');
+    const text = wrapper.find('p').text();
+    expect(text).toEqual('Count: -1');
   });
 });
