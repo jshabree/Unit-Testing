@@ -13,6 +13,8 @@ describe('Home', () => {
     });
 });
 
+// for non-interactive components
+
 // describe('Home', () => {
 //     it('should render banner text correctly with given strings', () => {
 
