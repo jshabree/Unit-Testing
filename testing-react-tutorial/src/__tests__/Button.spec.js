@@ -1,4 +1,6 @@
 import React from "react";
+
+// mounting component using "create"
 import { create } from "react-test-renderer";
 
 function Button(props) {
