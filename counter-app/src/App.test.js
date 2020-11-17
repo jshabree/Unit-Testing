@@ -65,3 +65,10 @@ describe('App component again', () => {
     expect(text).toEqual('Count: -1');
   });
 });
+
+// testing the snapshot feature
+
+it('App component matches the snapshot', () => {
+  const tree = renderer.create(<App />).toJSON();
+  expect(tree).toMatchSnapshot();
+});
