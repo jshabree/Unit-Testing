@@ -15,6 +15,8 @@ class App extends Component {
 
   increment = this.makeIncrementer(1);
 
+  decrement = this.makeIncrementer(-1);
+
   render() {
     return (
       <div>
@@ -25,6 +27,10 @@ class App extends Component {
 
         <button className = "increment" onClick = {this.increment}>
           Increment value of count
+        </button>
+
+        <button className = "decrement" onClick = {this.decrement}>
+          Decrement value of count
         </button>
         
       </div>
