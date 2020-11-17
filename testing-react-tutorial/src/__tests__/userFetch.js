@@ -46,10 +46,13 @@ export default class Users extends Component {
 // testing here
 
 describe("User component", () => {
-    test("it shows a list of users", () => {
-      act(() => {
-        render(<userFetch />, container);
+    test("it shows a list of users", async() => {
+        const fakeResponse = [{ name: "Juveria" }, { name: "Juveria S" }];
+
+        await act(async () => {
+            render(<userFetch />, container);
       });
-      expect(container.textContent).toBe("What to expect?");
+
+      expect(container.textContent).toBe("Juveria Ali S");
     });
   });
