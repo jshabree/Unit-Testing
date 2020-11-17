@@ -49,10 +49,21 @@ describe("User component", () => {
     test("it shows a list of users", async() => {
         const fakeResponse = [{ name: "Juveria" }, { name: "Juveria S" }];
 
+        jest.spyOn(window, "fetch").mockImplementation(() => {
+            const fetchResponse = {
+                json: () => Promise.resolve(fakeResponse)
+            };
+
+            return Promise.resolve(fetchResponse);
+        });
+
         await act(async () => {
             render(<userFetch />, container);
       });
 
       expect(container.textContent).toBe("Juveria Ali S");
+
+      window.fetch.mockRestore();
+      
     });
   });
