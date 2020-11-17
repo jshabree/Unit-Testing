@@ -41,6 +41,11 @@ describe("Button component", () => {
         const component = create(<Button text = "Subscribe to Basic" />);
         const instance = component.getInstance();
         expect(instance.state.text).toBe("");
+
+        // specifically checking handleClick function
+        
+        instance.handleClick();
+        expect(instance.state.text).toBe("PROCEED TO CHECKOUT");
     });
     
 });
