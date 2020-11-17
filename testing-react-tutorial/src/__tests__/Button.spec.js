@@ -1,4 +1,3 @@
-import { func } from "prop-types";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { act } from "react-dom/test-utils";
@@ -34,8 +33,16 @@ describe("Button component", () => {
 
         act(() => {
             ReactDOM.render(<Button text = "SUBSCRIBE TO BASIC" />,container);
-        })
+        });
+        const button = container.getElementsByTagName("button")[0];
+        expect(button.textContent).toBe("SUBSCRIBE TO BASIC");
+
+        act(() => {
+            button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+        });
         
-    })
+        expect(button.textContent).toBe("PROCEED TO CHECKOUT");
+        
+    });
     
-})
+});
