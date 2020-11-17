@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 // mounting component using "create"
-import { create } from "react-test-renderer";
+// using "act" because we want to avoid using DOM. Wrap your components in act while creating them and passing them
+import { create, act } from "react-test-renderer";
 
 function Button(props) {
     const [text, setText] = useState("");
@@ -27,7 +28,13 @@ function Button(props) {
 
 describe("Button component", () => {
     test('it shows the expected text when clicked (testing the wrong way)', () => {
-        const component = create(<Button text = "Subscribe to Basic" />);
+        let component;
+
+        // we use act to specify any component changes in state
+
+        act(() => {
+            component = create(<Button text = "Subscribe to Basic" />);
+        });
 
         const instance = component.root;
 
@@ -38,9 +45,10 @@ describe("Button component", () => {
 
         // instance.handleClick();
         // expect(instance.state.text).toBe("PROCEED TO CHECKOUT");
+
         const button = instance.findByType("button");
 
-        button.props.onClick();
+        act (() => button.props.onClick());
         expect(button.props.children).toBe("PROCEED TO CHECKOUT");
     });
     
