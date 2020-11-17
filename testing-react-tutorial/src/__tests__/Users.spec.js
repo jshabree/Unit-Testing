@@ -47,7 +47,7 @@ export default class Users extends Component {
 
 describe("User component", () => {
     test("it shows a list of users", async() => {
-        const fakeResponse = [{ name: "Juveria" }, { name: "Juveria S" }];
+        const fakeResponse = [{ name: "Juveria" }, { name: " S Ali" }];
 
         jest.spyOn(window, "fetch").mockImplementation(() => {
             const fetchResponse = {
@@ -58,10 +58,10 @@ describe("User component", () => {
         });
 
         await act(async () => {
-            render(<userFetch />, container);
+            render(<Users />, container);
       });
 
-      expect(container.textContent).toBe("Juveria Ali S");
+      expect(container.textContent).toBe("Juveria S Ali");
 
       window.fetch.mockRestore();
       
