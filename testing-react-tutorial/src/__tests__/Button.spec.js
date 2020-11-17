@@ -1,8 +1,19 @@
+import { func } from "prop-types";
 import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import { act } from "react-dom/test-utils";
 
-// mounting component using "create"
-// using "act" because we want to avoid using DOM. Wrap your components in act while creating them and passing them
-import { create, act } from "react-test-renderer";
+let container;
+
+beforeEach(() => {
+    container = document.createElement("div");
+    document.body.appendChild(container);
+});
+
+afterEach(() => {
+    document.body.removeChild(container);
+    container = null;
+});
 
 function Button(props) {
     const [text, setText] = useState("");
@@ -14,42 +25,17 @@ function Button(props) {
     </button>
 }
 
-
-// describe("Button component", () => {
-//     test('Matches the snapshot', () => {
-//         const button = create(<Button />);
-//         expect(button.toJSON()).toMatchSnapshot();
-//     });
-    
-// });
-
-// using react-test-renderer for asserting behavior on components
-// changing text on the button when its clicked
+// testing
 
 describe("Button component", () => {
-    test('it shows the expected text when clicked (testing the wrong way)', () => {
-        let component;
+    test('it shows the expected text when clicked', () => {
 
-        // we use act to specify any component changes in state
+        // mount the component with act
 
         act(() => {
-            component = create(<Button text = "Subscribe to Basic" />);
-        });
-
-        const instance = component.root;
-
-        // const instance = component.getInstance();
-        // expect(instance.state.text).toBe("");
-
-        // specifically checking handleClick function
-
-        // instance.handleClick();
-        // expect(instance.state.text).toBe("PROCEED TO CHECKOUT");
-
-        const button = instance.findByType("button");
-
-        act (() => button.props.onClick());
-        expect(button.props.children).toBe("PROCEED TO CHECKOUT");
-    });
+            ReactDOM.render(<Button text = "SUBSCRIBE TO BASIC" />,container);
+        })
+        
+    })
     
-});
+})
