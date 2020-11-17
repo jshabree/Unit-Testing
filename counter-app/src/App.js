@@ -26,7 +26,7 @@ class App extends Component {
         </p>
 
         <button className = "increment" onClick = {this.increment}>
-          Increment value of count
+          Increment value of count2
         </button>
 
         <button className = "decrement" onClick = {this.decrement}>
